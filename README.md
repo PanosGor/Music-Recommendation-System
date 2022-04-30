@@ -90,5 +90,38 @@ The analysis for the two populations shown the following results:
 -	Out of the total 11946 tags 68 outliers were found in terms of how many the tag IDs have been used by the users
 -	Out of the total 1892 user IDs 40 outliers were found in terms of how many tags they have used
 
+### DATA PREPROCESSING
+
+As was discussed earlier the range of the users’ ratings is extremely high 352697 with 352698 being the highest rating in the dataset and 1 being the smallest user rating in the dataset. 
+As a result, the outliers among the users’ rating were affecting the analysis. 
+
+**An example from a user case:**
+User 2 which also happens to be the first user in the data set (user_artist.dat) had high ratings for her favorite artists. 
+Among the artists that user 2 liked was artist ID 51 with a rating of 13883. User 1454 had 11 common artists with similar ratings to user 2 but user 1505 had only one common artist with user 2 and that is Artist ID 51 with a rating of 13790. 
+As a result, Users 1505 because of the common ratings, he had for Artists 51 would be categorized as much more similar User 2. 
+Even though in reality User 1454 has more similar taste in music to User 2.
+To fix this issue a standardization methodology was used on the dataset in order to standardize the values in the dataset. 
+
+More specifically the following formula was used:
+
+-	new_rating=(rating-user_ratings.mean())/(user_ratings.max()- ratings.min())
+
+The reason behind this, is to bring the mean of all the ratings that the User gives to 0 and dividing it by the range of the ratings of the User. 
+The range of the new values is [-1,1]. This method can correct for any users that are too harsh (very low ratings) or too lenient (very high ratings).
+Negative values indicated no interest or dislike to the artist while positive values indicating positive feedback to the artist by the user with values closer to one indicating high ratings
+
+*Screenshot 1*
+
+![image](https://user-images.githubusercontent.com/82097084/166108503-bbf7afbe-9559-4277-be66-e7ec4ca31d10.png)
+
+
+After applying the standardization function on the dataset, the next step was to find the similarity between the users. 
+In order to do that, the angular distance between the ratings needed to be calculated. Cosine_similarity function from Sklearn library was used in order to calculate the similarity among the users. 
+The result was a new dataframe that had the users both on the vertical and the horizontal axis and for every row the cosine similarity of each user to the rest of the users in the dataset. 
+The idea behind cosine similarity because every row in the dataframe is expressed as vector and in this case every row expresses a different user. 
+The whole dataset can be expressed in vector space. Users that have similar tastes in music have smaller angular distance than the rest of the users. 
+The similarity is calculated based on the following formula:
+
+sim(U_i,U_j )=(∑_k▒〖(r_(i,k)*r_(j,k))〗)/(√(∑_k▒〖(r_(i,k))〗^2 ) √(∑_k▒〖(r_(j,k))〗^2 ))
 
 
