@@ -122,6 +122,7 @@ The idea behind cosine similarity because every row in the dataframe is expresse
 The whole dataset can be expressed in vector space. Users that have similar tastes in music have smaller angular distance than the rest of the users. 
 The similarity is calculated based on the following formula:
 
-sim(U_i,U_j )=(∑_k▒〖(r_(i,k)*r_(j,k))〗)/(√(∑_k▒〖(r_(i,k))〗^2 ) √(∑_k▒〖(r_(j,k))〗^2 ))
+![image](https://user-images.githubusercontent.com/82097084/166108564-a89fd1b7-b9c7-4bb8-a55b-ff354c0fba24.png)
+
 
 
