@@ -122,7 +122,68 @@ The idea behind cosine similarity because every row in the dataframe is expresse
 The whole dataset can be expressed in vector space. Users that have similar tastes in music have smaller angular distance than the rest of the users. 
 The similarity is calculated based on the following formula:
 
+*Equation 1*
+
 ![image](https://user-images.githubusercontent.com/82097084/166108564-a89fd1b7-b9c7-4bb8-a55b-ff354c0fba24.png)
 
+*Graph 5*
 
+![image](https://user-images.githubusercontent.com/82097084/166108589-5026b612-8882-44e2-84f3-e6547a2f9d51.png)
+
+Negative values indicated no or very little similarity among the users and positive values indicated the existence of similarity among the users with values closer to one indicating a very strong relationship. 
+As was expected the cosine similarity among of the user with herself was one. 
+To avoid, picking up for each user herself as the most similar neighbor. 
+All the diagonal values were replaced by zero.
+
+*Screenshot 2*
+
+![image](https://user-images.githubusercontent.com/82097084/166108607-9fab1053-278d-4ba3-b44e-9874f17e0b61.png)
+
+After calculating the similarities among the users, the next step was to find the K most similar users for each user. 
+Function findKNeighbors calculated for each user the 5 users with the biggest cosine similarity. 
+By sorting the results in the dataframe and taking the 5 highest ones. Returning this way, a new dataframe.
+
+*Screenshot 3*
+
+![image](https://user-images.githubusercontent.com/82097084/166108631-1dc50770-b9b7-4f6a-a594-0100b5d05372.png)
+
+The new dataframe provided the 5 most similar users for each user as can be seen from the screenshot below.
+
+*Screenshot 5*
+
+![image](https://user-images.githubusercontent.com/82097084/166108647-6bc05bf0-f45c-446d-b408-fa2bf6eafccf.png)
+
+
+### COLLABORATIVE FILTERING
+
+As was described earlier a Collaborative Filtering methodology was used for the creation of the Recommendation System. 
+A recommendation System is an algorithm that aims to discover pattern in data and provide relevant information to the user. 
+In this case a user based collaborative filtering technique was used and it is based on the idea that neighbors vote according to their similarity to the user. 
+Is based on the formula:
+
+*Equation 2*
+
+![image](https://user-images.githubusercontent.com/82097084/166108712-8171b923-42f4-41f0-a87a-be7effa5f44a.png)
+
+Where r_(u,i) is the predicted rating of user u to item i, (r_u ) ̅ is the average rating of user u. 
+Sim denotes the similarity and is defined in Equation 1.  
+N(u) denotes the neighborhood of user u or the most similar users to user u.
+Users that are most similar to the active User were used in order to suggest an Artist that the active User had not heard before.
+
+Below is a very simple illustration of how recommender systems work in the context.
+
+![image](https://user-images.githubusercontent.com/82097084/166108739-8de364c5-6907-41de-b7bf-9ed5abfc32ce.png)
+
+By using Collaborative Filtering method, the system calculated the recommended artists for the Active User by taking into consideration the ratings of her most similar neighbors for all the artists she had not heard before.
+In order to improve the effectiveness of the recommendations the system doubles the weight of any user among the K neighbors which happens to be one of the Active User’s friends.
+In the following example User 1585 was one of User’s 2 friends. After adjusting his weight User 1585 ended in the first place.
+
+*Screenshot 6*
+
+![image](https://user-images.githubusercontent.com/82097084/166108778-75fdad58-10d4-48a1-880f-b067014a8028.png)
+
+After adjusting user’s 1585 weight and reranking the most similar users according to their new weights the score of the recommended artists changed as well. 
+Indicating that new artists that close friends like might be included in the recommendations. 
+While before the reranking, these artists might have been left out. 
+This improvement in the model is taking into consideration the relationship among the users and adjusts the system so that users’ friends are affecting the recommendations more than the rest of the similar users. 
 
