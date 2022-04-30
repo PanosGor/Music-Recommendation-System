@@ -29,7 +29,7 @@ For the creation and the analysis 6 data files were used:
 -	User_taggedartists.dat which provides information with regards to the number of tags per user 
 -	user_taggedartists_timestamps.dat which provides information with regards to the number of tags per user in addition to information with regards to date and time of each tag made by each user
 
-# SUMMARY OF DATA 
+### SUMMARY OF DATA 
 
 The analysis of the data provided the following results:
 
@@ -63,6 +63,32 @@ Again, only few of the User IDs are presented as there are more than 1800 users 
 
 ![image](https://user-images.githubusercontent.com/82097084/166108250-5a8b6dfd-a5dc-4360-a94f-cc084fd0a578.png)
 
+Graph 3 provides a graphical representation of the Tags frequency per artist. 
+The vertical axis (y) presents the Tag frequency per artist while on the horizontal axis(x) the artist IDs are presented. 
+Due to the thousands of artists IDs only few of them are presented in the graph in order to ensure readability.
+
+### OUTLIER DETECTION 
+
+Outliers are cases that have data values that are very different from the rest of the dataset. 
+Usually, they can take extremely high or extremely low values. 
+Detecting and handling outliers is a very important step because they can affect the results of the analysis.
+A good method to usually detect outliers is to find all the data values that are more than 3 standard deviations away from the mean of the population.
+
+*Graph 4*
+
+![image](https://user-images.githubusercontent.com/82097084/166108328-4372892b-c640-44ec-b398-3a38250f3e14.png)
+
+For the outlier detection among the users in terms of how many tags they have used as well as the outliers among the tags in terms of how many times they were used by users the same methodology was used. 
+More specifically the mean and standard deviation was calculated for the users in terms of how many tags they have used as well as the mean and standard deviation for the tags in terms of how many times they were used by users. 
+
+Then the upper and lower limits for each population were calculated:
+-	Upper Limit = population_mean() + (population_std()*3)
+-	Lower Limit= population_mean() - (population_std ()*3)
+-	Any values bigger than the upper limit or smaller than the lower limit automatically considered to be an outlier
+-	
+The analysis for the two populations shown the following results:
+-	Out of the total 11946 tags 68 outliers were found in terms of how many the tag IDs have been used by the users
+-	Out of the total 1892 user IDs 40 outliers were found in terms of how many tags they have used
 
 
 
