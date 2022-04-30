@@ -28,3 +28,41 @@ For the creation and the analysis 6 data files were used:
 -	User_friends.dat which contains a list of all the friend IDs per user
 -	User_taggedartists.dat which provides information with regards to the number of tags per user 
 -	user_taggedartists_timestamps.dat which provides information with regards to the number of tags per user in addition to information with regards to date and time of each tag made by each user
+
+# SUMMARY OF DATA 
+
+The analysis of the data provided the following results:
+
+-	In total 17632 unique Artist IDs were found
+-	1892 unique User IDs were found
+-	11946 different Tag IDs were found
+-	92834 unique combinations of users and artist IDs. This is the total number of artists that have been heard by all users in the dataset
+-	25434 total Friend Relationships among Users. This number refers to all the user interrelationships or the total number of friends per user for all users
+-	186479 total Tag Assignments by all users
+-	Ratings Range = 352697 (Highest rate = 352698, Lowest Rate = 1)
+-	
+As can be seen from the above analysis one of the worth mentioning results is the huge rating range (352697) this inconsistency in the dataset can create inaccurate results. 
+
+*Graph 1*
+
+![image](https://user-images.githubusercontent.com/82097084/166108196-e9a05a8f-41ee-4ac8-bde6-6b5330d2e099.png)
+
+Graph 1 provides a graphical representation of the frequency that each artist had been heard by the users. 
+The vertical axis (y) describes the artist frequency while at the horizontal axis (x) is the names of the bands. 
+In the Graph only few band names appear as there are more than 17 thousand artists in the dataset and presenting all of them would not provide any useful insight.
+
+*Graph 2*
+
+![image](https://user-images.githubusercontent.com/82097084/166108217-6b9a1f2d-108d-463d-972c-4001f35657b8.png)
+
+Graph 2 provides a graphical representation of the tag frequency per user. 
+More specifically on the vertical axis(y) the Tag frequencies are presented while on the horizontal axis (x) the user IDs are presented. 
+Again, only few of the User IDs are presented as there are more than 1800 users in the dataset.
+
+*Graph 3*
+
+![image](https://user-images.githubusercontent.com/82097084/166108250-5a8b6dfd-a5dc-4360-a94f-cc084fd0a578.png)
+
+
+
+
